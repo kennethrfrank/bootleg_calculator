@@ -168,13 +168,19 @@ class App extends Component {
           <div>
           Operation: {this.state.operation}
           </div>
-          <div>
-          Result:  {this.state.result}
-          </div>
+         
           
          
           </GridColumn>
           
+          
+        </GridRow>
+        <GridRow>
+        <GridColumn width={16} textAlign='center' >
+          <Header as="h1" className='result'>
+          Result:  {this.state.result}
+          </Header>
+          </GridColumn>
         </GridRow>
       {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
