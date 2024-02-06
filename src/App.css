@@ -40,3 +40,8 @@
 .row.introductoryInfo{
   margin-top: 30px;
 }
+
+.wide.column.border{
+
+ border: 2px solid black !important;
+}

@@ -128,8 +128,8 @@ class App extends Component {
           </GridColumn>
         </GridRow> */}
         <GridRow centered>
-          <GridColumn width={1}>
-            <Input placeholder="?" onChange={evt => this.updateInputValue1(evt)}/>
+          <GridColumn width={3} >
+            <Input fluid className="val" placeholder="?" onChange={evt => this.updateInputValue1(evt)}/>
           </GridColumn>
           <GridColumn width={10} textAlign='center'>
             <Button name="operation" value="+" onClick={this.handleChange}>
@@ -145,12 +145,12 @@ class App extends Component {
               -
             </Button>
           </GridColumn>
-          <GridColumn width={1} textAlign='right'>
-            <Input placeholder="?" onChange={evt => this.updateInputValue2(evt)}/>
+          <GridColumn width={3}>
+            <Input fluid className="val" placeholder="?" onChange={evt => this.updateInputValue2(evt)}/>
           </GridColumn>
         </GridRow>
         <GridRow centered>
-          <GridColumn width={2} textAlign='center'>
+          <GridColumn width={10} textAlign='center'>
             <Button onClick={evt=> this.calculateResult(evt)}>
               =
             </Button>
