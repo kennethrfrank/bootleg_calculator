@@ -28,7 +28,7 @@ class App extends Component {
     // ...       
     this.setState({
       val1: parseInt(val),
-      result: "Continue your Calculatiion Inputs, Press '=' When Done"
+      result: "Continue your Calculation Inputs, Press '=' When Done"
     });
     
   }
@@ -37,12 +37,12 @@ class App extends Component {
     
     this.setState({
       val2: parseInt(val),
-      result: "Continue your Calculatiion Inputs, Press '=' When Done"
+      result: "Continue your Calculation Inputs, Press '=' When Done"
     });
     
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value,
-  result: "Continue your Calculatiion Inputs, Press '=' When Done" });
+  result: "Continue your Calculation Inputs, Press '=' When Done" });
 
   calculateResult(e){
     const {val1, val2, calcApproach, operation}= this.state
@@ -128,7 +128,7 @@ class App extends Component {
           </GridColumn>
         </GridRow> */}
         <GridRow centered>
-          <GridColumn width={3} textAlign='center'>
+          <GridColumn width={1}>
             <Input placeholder="?" onChange={evt => this.updateInputValue1(evt)}/>
           </GridColumn>
           <GridColumn width={10} textAlign='center'>
@@ -145,7 +145,7 @@ class App extends Component {
               -
             </Button>
           </GridColumn>
-          <GridColumn width={3} textAlign='center'>
+          <GridColumn width={1} textAlign='right'>
             <Input placeholder="?" onChange={evt => this.updateInputValue2(evt)}/>
           </GridColumn>
         </GridRow>
@@ -158,9 +158,7 @@ class App extends Component {
         </GridRow>
         <GridRow centered>
           <GridColumn width={16}>
-          <div>
-          Calculation Approach: {this.state.calcApproach}
-          </div>
+
           <div>
           Value 1: {this.state.val1} 
           </div>
