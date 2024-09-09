@@ -74,12 +74,12 @@ class App extends Component {
       }else if (remainder == 1){
         gcd = 1
       }
-       return {result: gcd}
+       return gcd
     }
     this.setState((state)=>{
       if(calcApproach == "Traditional"){
 
-       return euclideanAlgo(val1,val2)
+       return{ result: euclideanAlgo(val1,val2) }
         // if(operation == "+"){
         // return{
         //   result: parseInt(val1, 10) + parseInt(val2, 10)
