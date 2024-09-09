@@ -20,7 +20,7 @@ class App extends Component {
       val2: "",
       calcApproach: "Traditional",
       operation: "",
-      result: "For a Result, Please Enter A Calculation"
+      result: "For a Result, Please Enter Some Input"
     };
   }
   updateInputValue1(evt) {
@@ -28,7 +28,7 @@ class App extends Component {
     // ...       
     this.setState({
       val1: parseInt(val),
-      result: "Continue your Calculation Inputs, Press '=' When Done"
+      result: "Continue..."
     });
     
   }
@@ -37,41 +37,73 @@ class App extends Component {
     
     this.setState({
       val2: parseInt(val),
-      result: "Continue your Calculation Inputs, Press '=' When Done"
+      result: "Continue..."
     });
     
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value,
-  result: "Continue your Calculation Inputs, Press '=' When Done" });
+  result: "Continue..." });
+  // euclideanAlgo(v1, v2){
+  //   v1 = parseInt(v1)
+  //   v2 = parseInt(v2)
+  //   var remainder = v1 % v2;
+  //   var gcd;
+
+  //   if(remainder == 0){
+  //     gcd = v1/v2;
+  //   }else if (remainder >1){
+  //     gcd = euclideanAlgo(v2, remainder)
+  //   }else if (remainder == 1){
+  //     gcd = 1
+  //   }
+  //    return {result: gcd}
+  // }
 
   calculateResult(e){
     const {val1, val2, calcApproach, operation}= this.state
+    const euclideanAlgo = (v1, v2) =>{
+      v1 = parseInt(v1)
+      v2 = parseInt(v2)
+      var remainder = v1 % v2;
+      var gcd;
+  
+      if(remainder == 0){
+        gcd = v1/v2;
+      }else if (remainder >1){
+        gcd = euclideanAlgo(v2, remainder)
+      }else if (remainder == 1){
+        gcd = 1
+      }
+       return {result: gcd}
+    }
     this.setState((state)=>{
       if(calcApproach == "Traditional"){
-        if(operation == "+"){
-        return{
-          result: parseInt(val1, 10) + parseInt(val2, 10)
-        }
+
+       return euclideanAlgo(val1,val2)
+        // if(operation == "+"){
+        // return{
+        //   result: parseInt(val1, 10) + parseInt(val2, 10)
+        // }
         
-        }
-        if(operation == "/"){
-          return{
-            result: parseInt(val1, 10) / parseInt(val2, 10)
-          }
+        // }
+        // if(operation == "/"){
+        //   return{
+        //     result: parseInt(val1, 10) / parseInt(val2, 10)
+        //   }
           
-        }
-        if(operation == "-"){
-          return{
-            result: parseInt(val1, 10) - parseInt(val2, 10)
-          }
+        // }
+        // if(operation == "-"){
+        //   return{
+        //     result: parseInt(val1, 10) - parseInt(val2, 10)
+        //   }
           
-        }
-        if(operation == "X"){
-          return{
-            result: parseInt(val1, 10) * parseInt(val2, 10)
-          }
+        // }
+        // if(operation == "X"){
+        //   return{
+        //     result: parseInt(val1, 10) * parseInt(val2, 10)
+        //   }
           
-        }
+        // }
       
       }
     });
@@ -85,10 +117,10 @@ class App extends Component {
         <GridRow centered className='introductoryInfo'>
           <GridColumn width={8} textAlign='center'>
               <Header textAlign='center' as="h1" >
-                Calculator Assignment 1
+                Greatest Common Divisor Assignment
               </Header>
               <div>Kenneth Frank</div>
-              <div>Software Engineering - Spring 2024</div>
+              <div>Cryptography - Fall 2024</div>
   
           </GridColumn>
           
@@ -98,13 +130,8 @@ class App extends Component {
             <List ordered>
                 <ListItem>
                 <Header as="h5">
-                Input two numbers
+                Input two numbers to evaluate the Greatest Common Denominator using the Euclidean algorithm
             </Header >
-                </ListItem>
-                <ListItem>
-                <Header as="h5">
-                Choose whether to add, subtract divide or multiply
-            </Header>
                 </ListItem>
                 <ListItem>
                 <Header as="h5" >
@@ -128,10 +155,10 @@ class App extends Component {
           </GridColumn>
         </GridRow> */}
         <GridRow centered>
-          <GridColumn width={3} >
+          <GridColumn width={4} >
             <Input fluid className="val" placeholder="?" onChange={evt => this.updateInputValue1(evt)}/>
           </GridColumn>
-          <GridColumn width={10} textAlign='center'>
+          {/* <GridColumn width={10} textAlign='center'>
             <Button name="operation" value="+" onClick={this.handleChange}>
               +
             </Button>
@@ -144,15 +171,15 @@ class App extends Component {
             <Button name="operation" value="-" onClick={this.handleChange}>
               -
             </Button>
-          </GridColumn>
-          <GridColumn width={3}>
+          </GridColumn> */}
+          <GridColumn width={4}>
             <Input fluid className="val" placeholder="?" onChange={evt => this.updateInputValue2(evt)}/>
           </GridColumn>
         </GridRow>
         <GridRow centered>
           <GridColumn width={10} textAlign='center'>
             <Button onClick={evt=> this.calculateResult(evt)}>
-              =
+              GCD =
             </Button>
           </GridColumn>
         </GridRow>
@@ -165,9 +192,9 @@ class App extends Component {
           <div>
           Value 2: {this.state.val2}
           </div>
-          <div>
+          {/* <div>
           Operation: {this.state.operation}
-          </div>
+          </div> */}
          
           
          
@@ -178,7 +205,7 @@ class App extends Component {
         <GridRow>
         <GridColumn width={16} textAlign='center' >
           <Header as="h1" className='result'>
-          Result:  {this.state.result}
+          Greatest Common Denominator Result:  {this.state.result}
           </Header>
           </GridColumn>
         </GridRow>
